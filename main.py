@@ -1,0 +1,67 @@
+from db import crear_conexion
+from operaciones import (crear_tabla_libros,
+                         crear_tabla_prestamos)
+
+
+def menu_principal():
+    return input("""
+=== MENÚ PRINCIPAL ===
+1. Gestionar libros.
+2. Gestionar préstamos.
+3. Salir
+                 
+Seleccione una opción:
+""")
+
+MENU_LIBROS = """
+=== Gestión de estudiantes ===
+1. Agregar libro.
+2. Mostrar todos los libros.
+3. Eliminar libro.
+4. Volver al menú principal.
+
+Usted escogió: 
+
+"""
+MENU_PRESTAMOS = """"""
+
+def main():
+    # Estableciendo conexión con db
+    connection = crear_conexion()
+
+    # Creando tablas
+    crear_tabla_libros(connection)
+    crear_tabla_prestamos(connection)
+
+    try:
+        while True:
+            # Creando submenú gestión de libros
+            def menu_gestion_libros():
+                while (opcion := input(MENU_LIBROS)) != "4":
+                    if opcion == "1":
+                        pass
+                    elif opcion == "2":
+                        pass
+                    elif opcion == "3":
+                        pass
+                    else:
+                        print("Opción inválida, por favor intente de nuevo")
+
+            # Desplegando menú principal
+            opcion = menu_principal()
+            if opcion == "1":
+                menu_gestion_libros()
+            elif opcion == "2":
+                pass
+            elif opcion == "3":
+                print("Hasta pronto, tenga un buen día.")
+                break
+
+            else:
+                print("Opción inválida")
+
+    finally:
+        connection.close()
+
+if __name__ == "__main__":
+    main()

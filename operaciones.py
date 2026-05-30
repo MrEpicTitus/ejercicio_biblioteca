@@ -19,4 +19,4 @@ def crear_tabla_prestamos(connection):
                 )
             """
     connection.execute(query)
-    print("Tabla préstamos creada exitosamente")
+    print("Tabla préstamos creada exitosamente!")
