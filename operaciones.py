@@ -29,3 +29,8 @@ def agregar_libro(connection, titulo, autor):
     cursor.execute(query, (titulo, autor))
     connection.commit()
     return cursor.lastrowid
+
+# 2 - Mostrar todos los libros
+def mostrar_libros(connection):
+    query = "SELECT * FROM libros"
+    return connection.execute(query).fetchall()

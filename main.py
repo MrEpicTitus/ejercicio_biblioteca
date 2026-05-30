@@ -1,7 +1,8 @@
 from db import crear_conexion
 from operaciones import (crear_tabla_libros,
                          crear_tabla_prestamos,
-                         agregar_libro)
+                         agregar_libro,
+                         mostrar_libros)
 
 
 def menu_principal():
@@ -45,7 +46,9 @@ def main():
                         id_libro = agregar_libro(connection, titulo, autor)
                         print(f"\nLibro {id_libro} agregado con éxito!")
                     elif opcion == "2":
-                        pass
+                        libros = mostrar_libros(connection)
+                        for libro in libros:
+                            print(libro)
                     elif opcion == "3":
                         pass
                     else:
