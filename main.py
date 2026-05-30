@@ -1,6 +1,7 @@
 from db import crear_conexion
 from operaciones import (crear_tabla_libros,
-                         crear_tabla_prestamos)
+                         crear_tabla_prestamos,
+                         agregar_libro)
 
 
 def menu_principal():
@@ -39,7 +40,10 @@ def main():
             def menu_gestion_libros():
                 while (opcion := input(MENU_LIBROS)) != "4":
                     if opcion == "1":
-                        pass
+                        titulo = input("Ingresar el nombre del libro: ")
+                        autor = input("Ingrensar el nombre del autor: ")
+                        id_libro = agregar_libro(connection, titulo, autor)
+                        print(f"\nLibro {id_libro} agregado con éxito!")
                     elif opcion == "2":
                         pass
                     elif opcion == "3":

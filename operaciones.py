@@ -20,3 +20,12 @@ def crear_tabla_prestamos(connection):
             """
     connection.execute(query)
     print("Tabla préstamos creada exitosamente!")
+
+################# SUBMENÚ LIBROS
+# 1 - Agregar libro
+def agregar_libro(connection, titulo, autor):
+    query = """INSERT INTO libros (titulo, autor) VALUES (?, ?)"""
+    cursor = connection.cursor()
+    cursor.execute(query, (titulo, autor))
+    connection.commit()
+    return cursor.lastrowid
