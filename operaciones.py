@@ -34,3 +34,10 @@ def agregar_libro(connection, titulo, autor):
 def mostrar_libros(connection):
     query = "SELECT * FROM libros"
     return connection.execute(query).fetchall()
+
+# 3 - Eliminar libro
+def eliminar_libro(connection, id_libro):
+    query = "DELETE FROM libros WHERE id = ?"
+    cursor = connection.cursor()
+    cursor.execute(query, (id_libro,))
+    connection.commit()

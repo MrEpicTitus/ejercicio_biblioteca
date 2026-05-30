@@ -2,7 +2,8 @@ from db import crear_conexion
 from operaciones import (crear_tabla_libros,
                          crear_tabla_prestamos,
                          agregar_libro,
-                         mostrar_libros)
+                         mostrar_libros,
+                         eliminar_libro)
 
 
 def menu_principal():
@@ -23,7 +24,7 @@ MENU_LIBROS = """
 4. Volver al menú principal.
 
 Usted escogió: 
-
+\n
 """
 MENU_PRESTAMOS = """"""
 
@@ -50,7 +51,9 @@ def main():
                         for libro in libros:
                             print(libro)
                     elif opcion == "3":
-                        pass
+                        id_libro = input("Ingrese el ID del libro que desea modificar: ")
+                        eliminar_libro(connection, id_libro)
+                        print(f"Libro {id_libro} eliminado")
                     else:
                         print("Opción inválida, por favor intente de nuevo")
 
