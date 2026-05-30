@@ -68,3 +68,14 @@ def registrar_prestamo(connection, id_libro, nombre_usuario):
 def mostrar_prestamos(connection):
     query = "SELECT * FROM prestamos"
     return connection.execute(query).fetchall()
+
+# Mostrar libros prestados con usuario
+def prestamos_con_usuario(connection):
+    query = """
+            SELECT 
+            prestamos.id_prestamos, prestamos.nombre_usuario, libros.titulo, libros.autor
+            FROM prestamos 
+            INNER JOIN libros ON prestamos.id_libro = libros.id
+            """
+    cursor = connection.cursor()
+    return cursor.execute(query).fetchall()

@@ -5,7 +5,8 @@ from operaciones import (crear_tabla_libros,
                          mostrar_libros,
                          eliminar_libro,
                          registrar_prestamo,
-                         mostrar_prestamos)
+                         mostrar_prestamos,
+                         prestamos_con_usuario)
 
 
 def menu_principal():
@@ -62,7 +63,10 @@ def main():
                         for prestamo in prestamos:
                             print(prestamo)
                     elif opcion == "3":
-                        pass
+                        relaciones = prestamos_con_usuario(connection)
+                        for relacion in relaciones:
+                            print(relacion)
+
                     else:
                         print("Opción inválida, por favor intente de nuevo")
 
