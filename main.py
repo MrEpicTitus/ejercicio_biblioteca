@@ -17,16 +17,23 @@ Seleccione una opción:
 """)
 
 MENU_LIBROS = """
-=== Gestión de estudiantes ===
+=== Gestión de libros ===
 1. Agregar libro.
 2. Mostrar todos los libros.
 3. Eliminar libro.
 4. Volver al menú principal.
 
 Usted escogió: 
-\n
 """
-MENU_PRESTAMOS = """"""
+MENU_PRESTAMOS = """
+=== Gestión de préstamos ===
+1. Registrar préstamo.
+2. Mostrar préstamos.
+3. Mostrar libros prestados con usuario.
+4. Volver al menú principal.
+
+Usted escogió: 
+"""
 
 def main():
     # Estableciendo conexión con db
@@ -38,6 +45,18 @@ def main():
 
     try:
         while True:
+            # Creando submenú gestión de préstamos
+            def menu_gestion_prestamos():
+                while (opcion := input(MENU_PRESTAMOS)) != "4":
+                    if opcion == "1":
+                        pass
+                    elif opcion == "2":
+                        pass
+                    elif opcion == "3":
+                        pass
+                    else:
+                        print("Opción inválida, por favor intente de nuevo")
+
             # Creando submenú gestión de libros
             def menu_gestion_libros():
                 while (opcion := input(MENU_LIBROS)) != "4":
@@ -51,7 +70,7 @@ def main():
                         for libro in libros:
                             print(libro)
                     elif opcion == "3":
-                        id_libro = input("Ingrese el ID del libro que desea modificar: ")
+                        id_libro = input("Ingrese el ID del libro que desea eliminar: ")
                         eliminar_libro(connection, id_libro)
                         print(f"Libro {id_libro} eliminado")
                     else:
@@ -62,7 +81,7 @@ def main():
             if opcion == "1":
                 menu_gestion_libros()
             elif opcion == "2":
-                pass
+                menu_gestion_prestamos()
             elif opcion == "3":
                 print("Hasta pronto, tenga un buen día.")
                 break
